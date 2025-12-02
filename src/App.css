@@ -1,9 +1,16 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;          /* take full width */
+  height: 100vh;        /* take full height */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically */
+  background: #f5f5f5;      /* optional background */
   text-align: center;
 }
+
+
 
 .logo {
   height: 6em;

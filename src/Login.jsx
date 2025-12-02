@@ -1,10 +1,13 @@
+// src/pages/Login.jsx
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
   const [role, setRole] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,8 +15,19 @@ function Login() {
       alert('Please fill in all fields');
       return;
     }
+
     console.log({ role, username, password });
-    // Send data to backend API here
+    // Normally you'd send data to backend API here
+
+    // Save role (optional)
+    localStorage.setItem("role", role);
+
+    // Redirect based on role
+    if (role === 'patient') {
+      navigate('/patient');
+    } else if (role === 'admin') {
+      navigate('/admin');
+    }
   };
 
   return (

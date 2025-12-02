@@ -1,57 +1,65 @@
+import PNavBar from "../NavBars/PNavBar";
+import BottomNav from "../NavBars/BottomNav";
 import "./PatientDashboard.css";
 
 function PatientDashboard() {
   return (
-    <div className="dashboard-container">
-        <div className="header-top">
-            <div className="heartbeat-icon">🩺</div> {/* heartbeat scanner */}
-            <div className="header-right">
-              <div className="notification">🔔</div>
-              <img src="/profile.jpg" alt="Profile" className="profile-pic" />
-            </div>
-          </div>
-  <div className="dashboard-main">
-   {/* HEADER */}
-        <header className="header">
-          
-
-          <h2>WELCOME BACK</h2>
-          <p>Your health matters. Let’s take care of you.</p>
-        </header>
-
-    {/* QUICK ACTIONS */}
-    <section className="quick-actions">
-      <h3>Your health and journey, simplified</h3>
-      <div className="actions-grid">
-        <button className="action-card">🏠<span>Home</span></button>
-        <button className="action-card">🩺<span>Symptoms</span></button>
-        <button className="action-card">📅<span>Appointment</span></button>
-        <button className="action-card">🚀<span>Care Journey</span></button>
-        <button className="action-card">⚙️<span>Settings</span></button>
-      </div>
-    </section>
-
-    {/* JOURNEY STARTER */}
-    <section className="journey-starter">
-      <img src="/cover.jpg" alt="Healthcare" className="cover-img" />
-      <div className="journey-text">
-        <h3>Start Your Health Journey</h3>
-        <p>Track your progress and stay updated with your medical needs.</p>
-        <button className="journey-btn">Get Started</button>
-      </div>
-    </section>
+    
+      <main className="dashboard-main">
+        {/* Header with welcome text, notification icon, and profile */}
+   <section className="dashboard-header">
+  {/* Top row: notification + profile on the right */}
+  <div className="header-top">
+    <div className="header-right">
+      <span className="notification-icon" title="Notifications">🔔</span>
+      <img
+        src="/assets/profile.jpg"
+        alt="Profile"
+        className="profile-pic"
+      />
+    </div>
   </div>
 
-  {/* BOTTOM NAV */}
-  <nav className="bottom-nav">
-    <button>🏠 Home</button>
-    <button>🩺 Symptoms</button>
-    <button>📅 Appointment</button>
-    <button>🚀 Care Journey</button>
-    <button>⚙️ Settings</button>
-  </nav>
-</div>
+  {/* Welcome text BELOW the icons */}
+  <div className="header-left">
+    <h1>Welcome back — We're here to help</h1>
+    <p>Your health journey, simplified.</p>
+  </div>
+</section>
 
+
+
+        {/* Quick Actions */}
+        <section className="quick-actions">
+          <div className="actions-grid">
+            <div className="action-card" onClick={() => window.location.href = "/patient/symptoms"}>
+              <span role="img" aria-label="stethoscope">🩺</span>
+              <p>Symptom Checker</p>
+            </div>
+            <div className="action-card" onClick={() => window.location.href = "/patient/appointment"}>
+              <span role="img" aria-label="calendar">📅</span>
+              <p>Book Appointment</p>
+            </div>
+            <div className="action-card" onClick={() => window.location.href = "/patient/care-journey"}>
+              <span role="img" aria-label="progress">📈</span>
+              <p>Care Journey Tracker</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Journey Starter */}
+        <section className="journey-starter">
+          <div className="journey-content">
+            <h2>Start Your Personalized Health Journey</h2>
+            <p>Get recommendations, book appointments, and track your progress all in one place.</p>
+            <button onClick={() => window.location.href = "/patient/care-journey"}>
+              Start Your Journey →
+            </button>
+          </div>
+        </section>
+      </main>
+
+    
   );
 }
 
