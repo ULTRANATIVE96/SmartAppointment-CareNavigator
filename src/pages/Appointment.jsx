@@ -1,5 +1,6 @@
 import "./Appointment.css";
 import NavBar from "../NavBars/PNavBar";
+import { NavLink } from "react-router-dom";
 
 export default function Appointment() {
   const dates = [
@@ -26,7 +27,15 @@ export default function Appointment() {
     <div className="appointment-wrapper">
       <NavBar />
 
-      <h2 className="title">Book Appointment</h2>
+      {/* Title Bar */}
+<div className="title-bar">
+  <NavLink to="/patient" className="title-link">
+  <span className="back-icon">{"<"}</span>
+  <h2 className="title">Book Appointment</h2>
+
+   </NavLink>
+</div>
+
       <p className="subtitle">Select a date, provider, and time slot below.</p>
 
       {/* Date Selection */}
@@ -34,7 +43,7 @@ export default function Appointment() {
       <div className="date-container">
         {dates.map((d, index) => (
           <button key={index} className="date-box">
-            <span>{d.day}</span>
+            <span>{d.day}</span><br/>
             <strong>{d.date}</strong>
           </button>
         ))}

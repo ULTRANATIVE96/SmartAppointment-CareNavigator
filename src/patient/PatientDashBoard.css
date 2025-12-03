@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(to bottom, #e3f2fd, #f5f5f5);
+  background: linear-gradient(to bottom, #92cc0a, #f5f5f5);
   color: #1a1a1a;
 }
 
@@ -17,14 +17,16 @@ body {
 ============================== */
 
 .dashboard-main {
-   display: flex;
+  display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  min-height: 100vh;
+  min-width: 100vw;
   background: linear-gradient(to bottom, #e3f2fd, #f5f5f5);
   flex: 1;
-  padding: 20px;
+  padding: 18px;
   padding-top: 10px;
   padding-bottom: 0px; 
+  
 }
 
 
@@ -40,9 +42,19 @@ body {
 /* Top row: icons aligned right */
 .header-top {
   display: flex;
-  justify-content: flex-end; /* pushes notification + profile to the right */
+  justify-content: space-between; /* pushes notification + profile to the right */
   align-items: center;
   margin-bottom: 12px;
+
+}
+.health-icon{
+  display: flex;
+  align-items: center;;
+}
+
+.health-icon .health{
+font-size: 1.8rem;
+color:#00796b;
 }
 
 .header-right {
@@ -52,10 +64,12 @@ body {
 }
 
 .notification-icon {
+  justify-content: flex-start;
   font-size: 1.5rem;
   color: #00796b;
   cursor: pointer;
 }
+
 
 .profile-pic {
   width: 40px;

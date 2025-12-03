@@ -7,9 +7,14 @@ function PatientDashboard() {
     
       <main className="dashboard-main">
         {/* Header with welcome text, notification icon, and profile */}
-   <section className="dashboard-header">
-  {/* Top row: notification + profile on the right */}
+<section className="dashboard-header">
   <div className="header-top">
+    {/* Left side: health icon */}
+    <div className="health-icon">
+      <span className="health">🩺</span>
+    </div>
+
+    {/* Right side: notification + profile */}
     <div className="header-right">
       <span className="notification-icon" title="Notifications">🔔</span>
       <img
@@ -20,12 +25,13 @@ function PatientDashboard() {
     </div>
   </div>
 
-  {/* Welcome text BELOW the icons */}
+  {/* Welcome text below */}
   <div className="header-left">
     <h1>Welcome back — We're here to help</h1>
     <p>Your health journey, simplified.</p>
   </div>
 </section>
+
 
 
 
@@ -58,8 +64,6 @@ function PatientDashboard() {
           </div>
         </section>
       </main>
-
-    
   );
 }
 

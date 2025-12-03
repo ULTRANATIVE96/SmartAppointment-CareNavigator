@@ -1,19 +1,61 @@
 .appointment-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   padding: 20px;
+  padding-bottom: 70px;
+  padding-top: 60px;
   font-family: 'Segoe UI', sans-serif;
 }
 
+/*==========================
+      Title Bar
+  ==========================*/
+       
 .title {
   font-size: 22px;
   font-weight: 600;
   margin-top: 20px;
 }
 
+.title-bar {
+  width:100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 2px solid #e0e0e0; /* horizontal border */
+  cursor: pointer;
+  background: #f8faff;
+  transition: background 0.2s ease;
+}
+
+.title-bar:hover {
+  background: #e0f2f1; /* subtle hover effect */
+}
+
+.back-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00796b;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  color: #004d40;
+}
+
 .subtitle {
   color: #666;
   margin-bottom: 15px;
+  
 }
-
+/*==========================
+      Date Selection
+  ==========================*/
+  
 .section-title {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -26,7 +68,8 @@
 }
 
 .date-box {
-  width: 70px;
+  color:black;
+  width: 100px;
   height: 80px;
   border-radius: 12px;
   border: 1px solid #e0e0e0;
@@ -38,9 +81,12 @@
 }
 
 .date-box:hover {
-  background: #e8f1ff;
+  background: #47b2e4;
 }
 
+/*======================
+    Provider Selection
+  ======================*/
 .provider-card {
   background: white;
   padding: 15px;
@@ -63,6 +109,7 @@
 }
 
 .time-box {
+    color:black;
   padding: 10px 0;
   border-radius: 10px;
   border: 1px solid #ddd;
