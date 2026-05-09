@@ -14,9 +14,9 @@ import AdminLayout from "./admin/AdminLayout.jsx";
 import AdminDashboard from "./admin/AdminDashboard.jsx";
 
 // Admin pages
-import AdminUsers from "./doctor/AdminUsers.jsx";
-import AdminReports from "./doctor/AdminReports.jsx";
-import AdminSettings from "./doctor/AdminSettings.jsx";
+import AdminUsers from "./admin/AdminUsers.jsx";
+import AdminReports from "./admin/AdminReports.jsx";
+import AdminSettings from "./admin/AdminSettings.jsx";
 import Profile from "./pages/Profile.jsx";
 import AdminProfile from "./pages/AdminProfile.jsx";
 import DoctorSchedule from "./doctor/DoctorSchedule.jsx";
