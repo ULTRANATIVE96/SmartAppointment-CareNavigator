@@ -37,13 +37,13 @@ BEGIN
     new.raw_user_meta_data->>'full_name', 
     new.raw_user_meta_data->>'avatar_url', 
     CASE 
-      WHEN new.email = 'hlayisekohh7@gmail.com' THEN 'superuser'
+      WHEN new.email = 'smart@gmail.com' THEN 'superuser'
       ELSE COALESCE(new.raw_user_meta_data->>'role', 'patient')
     END
   );
 
   -- Make sure superusers and doctors are added to the doctors table
-  IF new.email = 'hlayisekohh7@gmail.com' OR COALESCE(new.raw_user_meta_data->>'role', '') IN ('doctor', 'admin') THEN
+  IF new.email = 'smart@gmail.com' OR COALESCE(new.raw_user_meta_data->>'role', '') IN ('doctor', 'admin') THEN
     INSERT INTO public.doctors (id, is_available, rating, experience_years)
     VALUES (new.id, true, 5.0, 10);
   END IF;

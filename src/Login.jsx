@@ -4,7 +4,7 @@ import { Activity, Shield, User, Lock, ArrowRight, Mail } from 'lucide-react';
 import { useAuth } from './hooks/useAuth';
 import { supabase } from './lib/supabase';
 
-const SUPERUSER_EMAIL = 'hlayisekohh7@gmail.com';
+const SUPERUSER_EMAIL = 'smart@gmail.com';
 
 function Login() {
   const [isSignUp, setIsSignUp] = useState(false);

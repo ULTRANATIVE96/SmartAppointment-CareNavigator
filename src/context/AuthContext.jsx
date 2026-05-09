@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }) => {
     else if (email.toLowerCase().includes('doctor')) role = 'doctor';
     
     // Superuser check
-    const SUPERUSER_EMAIL = 'hlayisekohh7@gmail.com';
+    const SUPERUSER_EMAIL = 'smart@gmail.com';
     if (email === SUPERUSER_EMAIL) role = 'superuser';
 
     // Create a consistent UUID for this email
