@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Activity, Shield, User, Lock, ArrowRight, Mail } from 'lucide-react';
 import { useAuth } from './hooks/useAuth';
-import { supabase } from './lib/supabase';
+import { supabase, isSupabaseConfigured } from './lib/supabase';
 
 const SUPERUSER_EMAIL = 'smart@gmail.com';
 
@@ -145,7 +145,13 @@ function Login() {
 
         {/* Form */}
         <form className="p-8 space-y-5" onSubmit={handleSubmit}>
-          
+
+          {!isSupabaseConfigured && (
+            <div className="bg-amber-50 text-amber-800 p-3 rounded-xl text-xs font-medium border border-amber-200">
+              <span className="font-bold">Demo Mode:</span> Supabase is not configured in <code className="font-mono">.env</code>. Sign in with any email (use <code className="font-mono">admin@...</code>, <code className="font-mono">doctor@...</code>, or any other email for patient).
+            </div>
+          )}
+
           {error && (
             <div className="bg-rose-50 text-rose-600 p-3 rounded-xl text-xs font-bold border border-rose-100 animate-pulse">
               ⚠️ {error}

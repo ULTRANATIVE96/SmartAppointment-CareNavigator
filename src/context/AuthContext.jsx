@@ -1,10 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
 
 export const AuthContext = createContext({})
 
-// TOGGLE THIS TO TRUE TO BYPASS SUPABASE
-const MOCK_MODE = false;
+// Automatically falls back to mock mode when Supabase env vars are not configured
+const MOCK_MODE = !isSupabaseConfigured;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
@@ -18,9 +18,15 @@ export const AuthProvider = ({ children }) => {
       if (savedUser) {
         const parsed = JSON.parse(savedUser);
         setUser(parsed);
+        const lowerEmail = parsed.email.toLowerCase();
+        let restoredRole = 'patient';
+        if (lowerEmail === 'smart@gmail.com') restoredRole = 'superuser';
+        else if (lowerEmail.includes('admin')) restoredRole = 'admin';
+        else if (lowerEmail.includes('doctor')) restoredRole = 'doctor';
         setProfile({
+          id: parsed.id,
           full_name: parsed.email.split('@')[0],
-          role: parsed.email.includes('admin') ? 'admin' : 'patient',
+          role: restoredRole,
           avatar_url: null
         });
       }
@@ -82,15 +88,15 @@ export const AuthProvider = ({ children }) => {
     let role = 'patient';
     if (email.toLowerCase().includes('admin')) role = 'admin';
     else if (email.toLowerCase().includes('doctor')) role = 'doctor';
-    
+
     // Superuser check
     const SUPERUSER_EMAIL = 'smart@gmail.com';
     if (email === SUPERUSER_EMAIL) role = 'superuser';
 
     // Create a consistent UUID for this email
-    const mockId = email === SUPERUSER_EMAIL 
+    const mockId = email === SUPERUSER_EMAIL
       ? '00000000-0000-0000-0000-000000000001'
-      : '00000000-0000-0000-0000-' + Math.abs(email.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)).toString(16).padStart(12, '0');
+      : '00000000-0000-0000-0000-' + Math.abs(email.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0)).toString(16).padStart(12, '0');
 
     // NEW: Check the database for this profile to see if they have a custom password
     const { data: dbProfile } = await supabase
